@@ -43,7 +43,7 @@
                     <h1>Campeonato Brasileiro</h1>
                 </div>
             <div class="table-custom-responsive">
-                <table class="table table-hover table-bordered">
+                <table class="table table-hover">
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>
@@ -73,7 +73,7 @@
                                 cell-bottom-four
                             @endif" >{{ $index }}</td>
                             <!-- Incorporar a imagem ao lado do nome do time na mesma célula -->
-                            <td >
+                            <td style="text-align: start;">
                                 <img src="images/{{ trim(strtolower($row[1])) }}.png" style="height: 25px; vertical-align: middle; margin-right: 5px;">
                                 {{ $row[1] }} <!-- Nome do time -->
                             </td>
@@ -87,7 +87,7 @@
                         @endif
                         @endforeach
                     </tbody>
-                    <tfoot>
+                    <tfoot class="table-dark">
                         <tr>
                             <td colspan="3">
                                 <div class="color-box" style="background-color:#2161c7"></div>
