@@ -47,12 +47,12 @@
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>
-                            <th colspan="2">Time</th>
-                            <th>P</th>
-                            <th>J</th>
-                            <th>V</th>
-                            <th>E</th>
-                            <th>D</th>
+                            <th colspan="2">TIMES</th>
+                            <th>PONTOS</th>
+                            <th>JOGOS</th>
+                            <th>VITORIAS</th>
+                            <th>EMPATES</th>
+                            <th>DERROTAS</th>
                             <th>GP</th>
                             <th>GC</th>
                             <th>SG</th>
@@ -74,7 +74,7 @@
                             @endif" >{{ $index }}</td>
                             <!-- Incorporar a imagem ao lado do nome do time na mesma célula -->
                             <td >
-                                <img src="images/{{ strtolower($row[1]) }}.png" style="height: 25px; vertical-align: middle; margin-right: 5px;">
+                                <img src="images/{{ trim(strtolower($row[1])) }}.png" style="height: 25px; vertical-align: middle; margin-right: 5px;">
                                 {{ $row[1] }} <!-- Nome do time -->
                             </td>
                             <!-- Loop através de outras células excluindo a primeira que contém o nome -->
