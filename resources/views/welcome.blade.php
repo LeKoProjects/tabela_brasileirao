@@ -74,7 +74,7 @@
                             @endif" >{{ $index }}</td>
                             <!-- Incorporar a imagem ao lado do nome do time na mesma célula -->
                             <td style="text-align: start;">
-                                <img src="images/{{ trim(strtolower($row[1])) }}.png" style="height: 25px; vertical-align: middle; margin-right: 5px;">
+                                <img src="images/{{ trim($row[1]) }}.png" style="height: 25px; vertical-align: middle; margin-right: 5px;">
                                 
                                 @if (trim($row[1]) == 'Sao Paulo')
                                 São Paulo
