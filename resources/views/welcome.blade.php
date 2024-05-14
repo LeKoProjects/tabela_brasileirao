@@ -75,7 +75,24 @@
                             <!-- Incorporar a imagem ao lado do nome do time na mesma célula -->
                             <td style="text-align: start;">
                                 <img src="images/{{ trim(strtolower($row[1])) }}.png" style="height: 25px; vertical-align: middle; margin-right: 5px;">
-                                {{ $row[1] }} <!-- Nome do time -->
+                                
+                                @if (trim($row[1]) == 'Sao Paulo')
+                                São Paulo
+                                @elseif(trim($row[1]) == 'Cuiaba')
+                                Cuiabá
+                                @elseif(trim($row[1]) == 'Atletico-MG')
+                                Atlético-MG
+                                @elseif(trim($row[1]) == 'Atletico-GO')
+                                Atlético-GO
+                                @elseif(trim($row[1]) == 'Vitoria')
+                                Vitória
+                                @elseif(trim($row[1]) == 'Gremio')
+                                Grêmio
+                                @elseif(trim($row[1]) == 'Criciuma')
+                                Criciúma
+                                @else
+                                    {{ trim($row[1]) }}
+                                @endif <!-- Nome do time -->
                             </td>
                             <!-- Loop através de outras células excluindo a primeira que contém o nome -->
                             @foreach ($row as $cell_index => $cell)
