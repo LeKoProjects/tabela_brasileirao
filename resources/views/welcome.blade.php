@@ -126,6 +126,8 @@
                                                     Grêmio
                                                 @elseif(trim($row[1]) == 'Criciuma')
                                                     Criciúma
+                                                @elseif(trim($row[1]) == 'Red Bull Bragantino')
+                                                    Bragantino
                                                 @else
                                                     {{ trim($row[1]) }}
                                                 @endif <!-- Nome do time -->
@@ -158,7 +160,7 @@
                                         SulAmericana
                                     </td>
 
-                                    <td colspan="3">
+                                    <td colspan="4">
                                         <div class="color-box" style="background-color:#d42a18"></div>
                                         Rebaixamento
                                     </td>
