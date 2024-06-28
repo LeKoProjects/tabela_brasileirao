@@ -11,42 +11,46 @@ class TabelaController extends Controller
 {
     public function tabela_brasileiro()
     {
-        // Configurando o cliente cURL com verificação de certificado desativada temporariamente
-        $client = new Client([
-            'verify' => false,
-        ]);
+        $rows = $this->getTabelaBrasileirao();
+        return view('welcome', compact('rows'));
+    }
 
-        // Realizando a solicitação HTTP usando cURL
+    public function selecionarTime(Request $request)
+    {
+        $teamIndex = $request->input('team');
+        $teamName = $request->input('teamName');
+        return response()->json(['message' => 'Time selecionado com sucesso!', 'team' => $teamIndex, 'teamName' => $teamName]);
+    }
+
+    public function showTeam($teamName)
+    {
+        $teamName = str_replace('_', ' ', $teamName);
+        $rows = $this->getTabelaBrasileirao();
+        return view('welcome', compact('rows', 'teamName'));
+    }
+
+    public function corrigirPalavra($palavra)
+    {
+        return Str::ascii($palavra);
+    }
+
+    public function getTabelaBrasileirao()
+    {
+        $client = new Client(['verify' => false]);
         $response = $client->get('https://www.gazetaesportiva.com/campeonatos/brasileiro-serie-a/');
-
-        // Obtendo o corpo da resposta HTTP
         $html = (string) $response->getBody();
-
-        // Criando uma instância do Crawler para analisar o HTML
         $crawler = new Crawler($html);
-
-        // Inicializando um array para armazenar os dados da tabela HTML
         $rows = [];
 
-        // Iterando sobre as linhas da tabela e extraindo os dados das células
         $crawler->filter('table tr')->each(function ($row) use (&$rows) {
             $rowData = [];
             $row->filter('td')->each(function ($cell) use (&$rowData) {
-                // Corrigindo a palavra antes de adicionar ao $rowData
                 $rowData[] = $this->corrigirPalavra($cell->text());
             });
             $rows[] = $rowData;
         });
 
-        // Retornando a view 'chances' com os dados da tabela HTML e da tabela chancesvit
-        return view('welcome', compact('rows'));
-    }
-
-    public function corrigirPalavra($palavra)
-    {
-        // Substituir caracteres acentuados pelos correspondentes sem acento
-        $palavraCorrigida = Str::ascii($palavra);
-
-        return $palavraCorrigida;
+        return $rows;
     }
 }
+

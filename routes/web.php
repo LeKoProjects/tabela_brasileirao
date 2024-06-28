@@ -19,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [TabelaController::class, 'tabela_brasileiro']);
+Route::get('/{teamName}', [TabelaController::class, 'showTeam']);
+Route::post('/selecionar-time', [TabelaController::class, 'selecionarTime']);
