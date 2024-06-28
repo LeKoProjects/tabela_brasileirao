@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-    <script src="{{ asset('assets\js\color-modes.js') }}"></script>
+    <script src="{{ asset('assets/js/color-modes.js') }}"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Adicionar a meta tag viewport -->
@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-    <link href="{{ asset('assets\dist\css\bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
         .cell-top-four {
@@ -53,11 +53,21 @@
             vertical-align: middle;
             margin-right: 5px;
         }
+
+        .table-responsive td img {
+            max-height: 25px;
+            height: auto;
+        }
+
+        .table-responsive td,
+        .table-responsive th {
+            white-space: nowrap;
+        }
     </style>
 
 
     <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&amp;display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ asset('blog.css') }}" rel="stylesheet">
 </head>
@@ -76,7 +86,7 @@
         <div class="row g-5">
             <div class="col-md-12">
                 <article class="blog-post">
-                    <div class="table-responsive"> <!-- Adicione a classe table-responsive -->
+                    <div class="table-responsive">
                         <table class="table table-hover">
                             <thead class="table-dark">
                                 <tr>
@@ -106,11 +116,10 @@
                                                     cell-middle-seven       
                                                 @elseif($index > 16) <!-- Ajuste conforme o total de times -->
                                                     cell-bottom-four @endif">
-                                                        {{ $index }}
+                                                {{ $index }}
                                             </td>
                                             <td><img src="images/{{ trim($row[1]) }}.png"
                                                 style="height: 25px; vertical-align: middle; margin-right: 5px;"></td>
-                                            <!-- Incorporar a imagem ao lado do nome do time na mesma célula -->
                                             <td style="text-align: start;">
                                                 @if (trim($row[1]) == 'Sao Paulo')
                                                     São Paulo
@@ -128,12 +137,10 @@
                                                     Criciúma
                                                 @else
                                                     {{ trim($row[1]) }}
-                                                @endif <!-- Nome do time -->
+                                                @endif
                                             </td>
-                                            <!-- Loop através de outras células excluindo a primeira que contém o nome -->
                                             @foreach ($row as $cell_index => $cell)
                                                 @if ($cell_index != 1)
-                                                    <!-- Pular o índice do nome do time para não duplicar -->
                                                     <td>{{ $cell }}</td>
                                                 @endif
                                             @endforeach
@@ -147,17 +154,14 @@
                                         <div class="color-box" style="background-color:#2161c7"></div>
                                         Libertadores
                                     </td>
-
                                     <td colspan="3">
                                         <div class="color-box" style="background-color:#d07026"></div>
                                         Libertadores
                                     </td>
-
                                     <td colspan="3">
                                         <div class="color-box" style="background-color:#1fbe4a"></div>
                                         SulAmericana
                                     </td>
-
                                     <td colspan="3">
                                         <div class="color-box" style="background-color:#d42a18"></div>
                                         Rebaixamento
