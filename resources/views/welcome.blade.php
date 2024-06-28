@@ -39,10 +39,6 @@
             vertical-align: middle;
             margin-right: 5px;
         }
-        .table-responsive td,
-        .table-responsive th {
-            white-space: nowrap;
-        }
         .highlight {
             background-color: rgba(255, 255, 20, 0.493) !important;
         }
