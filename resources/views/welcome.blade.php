@@ -39,10 +39,6 @@
             vertical-align: middle;
             margin-right: 5px;
         }
-        .table-responsive td img {
-            max-height: 25px;
-            height: auto;
-        }
         .table-responsive td,
         .table-responsive th {
             white-space: nowrap;
@@ -142,7 +138,7 @@
                                         <div class="color-box" style="background-color:#1fbe4a"></div>
                                         SulAmericana
                                     </td>
-                                    <td colspan="3">
+                                    <td colspan="4">
                                         <div class="color-box" style="background-color:#d42a18"></div>
                                         Rebaixamento
                                     </td>
